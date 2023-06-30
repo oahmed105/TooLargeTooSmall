@@ -11,29 +11,35 @@ public class Main {
         Random random = new Random();
         int number = random.nextInt(5) + 1;
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter a number: ");
-        int line = input.nextInt();
+        int line = Integer.MAX_VALUE;
+        int guess = Integer.MAX_VALUE;
+        int guesses = 0;
 
-        do {
+
+        while (line > number || line < number) {
             System.out.print("Enter a number: ");
-            input.nextInt();
+            line = input.nextInt();
 
-        } while (line == number);
+            if (guess == line) {
+                System.out.println("Guess a different number :( :");
+                continue;
+            }
+            guesses++;
+            if (line > number){
+                System.out.println("Too large");
+                guess = line;
 
+            }
 
+            else if (line < number) {
+                System.out.println("Too small");
+                guess = line;
 
-        /*
-        if (line > number) {
-            System.out.println("Too Large");
+            }
+            }
+            System.out.println("Correct guess!");
+        System.out.println("You guessed correctly in " + guesses + " guesses :)");
+
         }
-        else if (line < number) {
-            System.out.println("Too Small");
-        }
-        else {
-            System.out.println("Correct Guess");
-        }
-        //System.out.println(number);
-        */
-
     }
-}
+
